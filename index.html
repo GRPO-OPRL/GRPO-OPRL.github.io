@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRPO-OPRL: Audio Samples</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0 auto;
+      padding: 20px 30px;
+      max-width: 1400px;
+      color: #333;
+      background: #fff;
+    }
+    h1 { color: #2c3e50; margin-bottom: 6px; }
+    h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 6px; margin-top: 40px; }
+    p.intro { font-size: 15px; color: #555; margin-bottom: 30px; line-height: 1.5; }
+
+    /* ── Model Comparison Table ── */
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    .comp-table th {
+      background: #2c3e50;
+      color: #fff;
+      padding: 8px 6px;
+      text-align: center;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .comp-table th:first-child {
+      text-align: left;
+      min-width: 260px;
+    }
+    .comp-table td {
+      padding: 8px 6px;
+      border-bottom: 1px solid #ddd;
+      vertical-align: middle;
+      text-align: center;
+    }
+    .comp-table td:first-child {
+      text-align: left;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #333;
+      max-width: 320px;
+    }
+    .comp-table tr:nth-child(even) td {
+      background: #f7f9fb;
+    }
+    .comp-table tr:hover td {
+      background: #eef4fa;
+    }
+    .comp-table audio {
+      width: 140px;
+    }
+    .sample-id {
+      display: inline-block;
+      background: #3498db;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* ── Pairwise Section ── */
+    h2.pair-heading { border-bottom-color: #e67e22; }
+    p.pair-intro { font-size: 14px; color: #666; margin-bottom: 20px; }
+    .pair-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+    .pair-card {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 14px 16px;
+      background: #fffaf4;
+    }
+    .pair-card .pair-id {
+      font-weight: 700;
+      font-size: 14px;
+      color: #e67e22;
+      margin-bottom: 8px;
+    }
+    .pair-texts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .pair-texts .col-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 2px;
+    }
+    .pair-texts .text-box {
+      font-size: 13px;
+      line-height: 1.45;
+      color: #444;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 6px 8px;
+    }
+    .pair-audios {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .pair-audios audio {
+      width: 100%;
+    }
+    .pair-audios .col-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      margin-bottom: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>GRPO-OPRL: Audio Demo Samples</h1>
+<p class="intro">Audio samples comparing TTS models for elder-facing Cantonese speech synthesis. 6 selected test utterances are shown below, each synthesised by 5 models alongside the ground truth human recording.</p>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<h2>Model Comparison</h2>
+<!-- ════════════════════════════════════════════════════════════ -->
+
+<table class="comp-table">
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Ground Truth</th>
+      <th>CosyVoice2-Yue</th>
+      <th>+ SFT</th>
+      <th>+ GRPO w/o OPRL</th>
+      <th>+ GRPO-OPRL S1</th>
+      <th>+ GRPO-OPRL S2</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- Sample 1 -->
+    <tr>
+      <td><span class="sample-id">#1</span>以日常飲食作為滋補強身甚至醫療，研究食物對維持健康及防治疾病的作用，即是所謂醫食同源。</td>
+      <td><audio controls preload="none"><source src="asset/audio/ground_truth/sample_1.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue/sample_1.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue_sft/sample_1.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_without_on_policy/sample_1.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_1/sample_1.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_2/sample_1.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <!-- Sample 2 -->
+    <tr>
+      <td><span class="sample-id">#2</span>報到手續會依航空公司而有所不同，有時同一航空公司亦會針對不同機場而實施不同的報道手續。</td>
+      <td><audio controls preload="none"><source src="asset/audio/ground_truth/sample_2.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue/sample_2.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue_sft/sample_2.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_without_on_policy/sample_2.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_1/sample_2.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_2/sample_2.wav" type="audio/wav"></audio></td>
+    </tr>
+
+
+    <!-- Sample 3 -->
+    <tr>
+      <td><span class="sample-id">#3</span>這種技術始于由愛立信公司於一九九四年的方案，它是研究在移動電話和其他配件間進行低功耗低成本的無線通訊連接的方法。</td>
+      <td><audio controls preload="none"><source src="asset/audio/ground_truth/sample_3.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue/sample_3.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue_sft/sample_3.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_without_on_policy/sample_3.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_1/sample_3.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_2/sample_3.wav" type="audio/wav"></audio></td>
+    </tr>
+
+
+    <!-- Sample 4 -->
+    <tr>
+      <td><span class="sample-id">#4</span>因為不需要與每個設備交換應答信號，這種通道可以用來將各種器件的藍牙服務概要，同時廣播到巨量的藍牙器件。</td>
+      <td><audio controls preload="none"><source src="asset/audio/ground_truth/sample_4.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue/sample_4.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue_sft/sample_4.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_without_on_policy/sample_4.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_1/sample_4.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_2/sample_4.wav" type="audio/wav"></audio></td>
+    </tr>
+
+
+    <!-- Sample 5 -->
+    <tr>
+      <td><span class="sample-id">#5</span>長期處於患病嘅狀態會影響患者嘅身體機能、情緒以及日常嘅生活，以致佢哋生活質素下降，令到患者身心承受唔少嘅壓力。</td>
+      <td><audio controls preload="none"><source src="asset/audio/ground_truth/sample_5.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue/sample_5.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue_sft/sample_5.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_without_on_policy/sample_5.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_1/sample_5.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_2/sample_5.wav" type="audio/wav"></audio></td>
+    </tr>
+
+    <!-- Sample 6 -->
+    <tr>
+      <td><span class="sample-id">#6</span>另外缺損程度較輕嘅長者可以透過輕度缺選長者家居照顧及支援服務,同埋綜閤家居照顧服務,確保佢哋可以接受家居支援嘅服務。</td>
+      <td><audio controls preload="none"><source src="asset/audio/ground_truth/sample_6.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue/sample_6.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/cosyvoice2_yue_sft/sample_6.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_without_on_policy/sample_6.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_1/sample_6.wav" type="audio/wav"></audio></td>
+      <td><audio controls preload="none"><source src="asset/audio/grpo_oprl_stage_2/sample_6.wav" type="audio/wav"></audio></td>
+    </tr>
+
+
+  </tbody>
+</table>
+
+<!-- ════════════════════════════════════════════════════════════ -->
+<h2 class="pair-heading">Pairwise: Speech (Elder-Facing) vs Speech (Normal)</h2>
+<p class="pair-intro">Each card compares the <b>elder-facing</b> text &amp; recording with the <b>normal</b> version, illustrating the speech style adaptation.</p>
+<!-- ════════════════════════════════════════════════════════════ -->
+
+<div class="pair-grid">
+
+  <!-- Sample 1 -->
+  <div class="pair-card">
+    <div class="pair-id">#1</div>
+    <div class="pair-texts">
+      <div><div class="col-label">Speech (Elder-Facing)</div><div class="text-box">以日常飲食作為滋補強身甚至醫療，研究食物對維持健康及防治疾病的作用，即是所謂醫食同源。</div></div>
+      <div><div class="col-label">Speech (Normal)</div><div class="text-box">以日常飲食作滋補強身甚至醫療研究食物對維持健康及防治疾病的作用,即所謂醫食同源。</div></div>
+    </div>
+    <div class="pair-audios">
+      <div><div class="col-label">Speech (Elder-Facing)</div><audio controls preload="none"><source src="asset/audio/ground_truth/sample_1.wav" type="audio/wav"></audio></div>
+      <div><div class="col-label">Speech (Normal)</div><audio controls preload="none"><source src="asset/audio/original/sample_1.wav" type="audio/wav"></audio></div>
+    </div>
+  </div>
+
+  <!-- Sample 2 -->
+  <div class="pair-card">
+    <div class="pair-id">#2</div>
+    <div class="pair-texts">
+      <div><div class="col-label">Speech (Elder-Facing)</div><div class="text-box">報到手續會依航空公司而有所不同，有時同一航空公司亦會針對不同機場而實施不同的報道手續。</div></div>
+      <div><div class="col-label">Speech (Normal)</div><div class="text-box">報道手續每依航空公司有所不同,有時同一航空公司會針對不同機場實施不同的報道手續。</div></div>
+    </div>
+    <div class="pair-audios">
+      <div><div class="col-label">Speech (Elder-Facing)</div><audio controls preload="none"><source src="asset/audio/ground_truth/sample_2.wav" type="audio/wav"></audio></div>
+      <div><div class="col-label">Speech (Normal)</div><audio controls preload="none"><source src="asset/audio/original/sample_2.wav" type="audio/wav"></audio></div>
+    </div>
+  </div>
+
+
+  <!-- Sample 3 -->
+  <div class="pair-card">
+    <div class="pair-id">#3</div>
+    <div class="pair-texts">
+      <div><div class="col-label">Speech (Elder-Facing)</div><div class="text-box">這種技術始于由愛立信公司於一九九四年的方案，它是研究在移動電話和其他配件間進行低功耗低成本的無線通訊連接的方法。</div></div>
+      <div><div class="col-label">Speech (Normal)</div><div class="text-box">技術始於愛立信公司的一九九四方案他是研究在移動電話和其他配件間進行低公耗低成本無線通訊連接的方法</div></div>
+    </div>
+    <div class="pair-audios">
+      <div><div class="col-label">Speech (Elder-Facing)</div><audio controls preload="none"><source src="asset/audio/ground_truth/sample_3.wav" type="audio/wav"></audio></div>
+      <div><div class="col-label">Speech (Normal)</div><audio controls preload="none"><source src="asset/audio/original/sample_3.wav" type="audio/wav"></audio></div>
+    </div>
+  </div>
+
+
+  <!-- Sample 4 -->
+  <div class="pair-card">
+    <div class="pair-id">#4</div>
+    <div class="pair-texts">
+      <div><div class="col-label">Speech (Elder-Facing)</div><div class="text-box">因為不需要與每個設備交換應答信號，這種通道可以用來將各種器件的藍牙服務概要，同時廣播到巨量的藍牙器件。</div></div>
+      <div><div class="col-label">Speech (Normal)</div><div class="text-box">因為不需要與每個設備交換應答信號,這種通道可以用來將各種器件的藍牙服務蓋要同時廣播到具量的藍牙器件。</div></div>
+    </div>
+    <div class="pair-audios">
+      <div><div class="col-label">Speech (Elder-Facing)</div><audio controls preload="none"><source src="asset/audio/ground_truth/sample_4.wav" type="audio/wav"></audio></div>
+      <div><div class="col-label">Speech (Normal)</div><audio controls preload="none"><source src="asset/audio/original/sample_4.wav" type="audio/wav"></audio></div>
+    </div>
+  </div>
+
+
+  <!-- Sample 5 -->
+  <div class="pair-card">
+    <div class="pair-id">#5</div>
+    <div class="pair-texts">
+      <div><div class="col-label">Speech (Elder-Facing)</div><div class="text-box">長期處於患病嘅狀態會影響患者嘅身體機能、情緒以及日常嘅生活，以致佢哋生活質素下降，令到患者身心承受唔少嘅壓力。</div></div>
+      <div><div class="col-label">Speech (Normal)</div><div class="text-box">長期處於患病的狀態會影響患者的身體機能情緒及日常生活,以致生活質素下降,令患者身心承受不少壓力。</div></div>
+    </div>
+    <div class="pair-audios">
+      <div><div class="col-label">Speech (Elder-Facing)</div><audio controls preload="none"><source src="asset/audio/ground_truth/sample_5.wav" type="audio/wav"></audio></div>
+      <div><div class="col-label">Speech (Normal)</div><audio controls preload="none"><source src="asset/audio/original/sample_5.wav" type="audio/wav"></audio></div>
+    </div>
+  </div>
+
+  <!-- Sample 6 -->
+  <div class="pair-card">
+    <div class="pair-id">#6</div>
+    <div class="pair-texts">
+      <div><div class="col-label">Speech (Elder-Facing)</div><div class="text-box">另外缺損程度較輕嘅長者可以透過輕度缺選長者家居照顧及支援服務,同埋綜閤家居照顧服務,確保佢哋可以接受家居支援嘅服務。</div></div>
+      <div><div class="col-label">Speech (Normal)</div><div class="text-box">另外缺選程度較輕的長者可以透過輕度缺選長者家居照顧及支援服務及綜閤家居照顧服務,確保他們能夠接受家居支援服務。</div></div>
+    </div>
+    <div class="pair-audios">
+      <div><div class="col-label">Speech (Elder-Facing)</div><audio controls preload="none"><source src="asset/audio/ground_truth/sample_6.wav" type="audio/wav"></audio></div>
+      <div><div class="col-label">Speech (Normal)</div><audio controls preload="none"><source src="asset/audio/original/sample_6.wav" type="audio/wav"></audio></div>
+    </div>
+  </div>
+
+
+</div>
+
+</body>
+</html>
